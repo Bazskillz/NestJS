@@ -26,8 +26,8 @@ services:
         networks:
         - postgres    
     dev:
-        container_name: nestjs_api_dev
-        image: nestjs-api-dev:latest
+        container_name: nestjs_dev
+        image: nestjs_dev:latest
         build:
             context: .
             target: development
@@ -42,24 +42,6 @@ services:
             - .:/usr/src/app
             - /usr/src/app/node_modules
         restart: unless-stopped
-    prod:
-        container_name: nestjs_api_prod
-        image: nestjs-api-prod:1.0.0
-        build:
-            context: .
-            target: production
-            dockerfile: ./Dockerfile
-        command: npm run start:prod
-        ports:
-            - 3000:3000
-            - 9229:9229
-        networks:
-            - nesjs-network
-        volumes:
-            - .:/usr/src/app
-            - /usr/src/app/node_modules
-        restart: unless-stopped
-
 networks:
     nesjs-network:
     

@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { PostsModule } from './posts/posts.module';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
+import PostsController from './posts/posts.controller';
+import PostsService from './posts/posts.service';
 
 @Module({
   imports: [PostsModule,
@@ -17,7 +19,7 @@ import * as Joi from '@hapi/joi';
       PORT: Joi.number(),
     })
   })],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, PostsController],
+  providers: [AppService, PostsService],
 })
 export class AppModule {}
